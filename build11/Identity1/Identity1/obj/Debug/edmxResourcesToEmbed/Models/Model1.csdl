@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Activities" EntityType="Model1.Activity" />
+    <EntitySet Name="Rooms" EntityType="Model1.Room" />
+    <EntitySet Name="GymClasses" EntityType="Model1.GymClass" />
+    <EntitySet Name="ClassBookings" EntityType="Model1.ClassBooking" />
+    <EntitySet Name="MemberLogs" EntityType="Model1.MemberLog" />
+    <AssociationSet Name="ActivityGymClass" Association="Model1.ActivityGymClass">
+      <End Role="Activity" EntitySet="Activities" />
+      <End Role="GymClass" EntitySet="GymClasses" />
+    </AssociationSet>
+    <AssociationSet Name="RoomGymClass" Association="Model1.RoomGymClass">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="GymClass" EntitySet="GymClasses" />
+    </AssociationSet>
+    <AssociationSet Name="ActivityMemberLog" Association="Model1.ActivityMemberLog">
+      <End Role="Activity" EntitySet="Activities" />
+      <End Role="MemberLog" EntitySet="MemberLogs" />
+    </AssociationSet>
+    <EntitySet Name="BookedBies" EntityType="Model1.BookedBy" />
+    <AssociationSet Name="GymClassBookedBy" Association="Model1.GymClassBookedBy">
+      <End Role="GymClass" EntitySet="GymClasses" />
+      <End Role="BookedBy" EntitySet="BookedBies" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityName" Type="String" Nullable="false" />
+    <NavigationProperty Name="GymClasses" Relationship="Model1.ActivityGymClass" FromRole="Activity" ToRole="GymClass" />
+    <NavigationProperty Name="MemberLogs" Relationship="Model1.ActivityMemberLog" FromRole="Activity" ToRole="MemberLog" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomName" Type="String" Nullable="false" />
+    <NavigationProperty Name="GymClasses" Relationship="Model1.RoomGymClass" FromRole="Room" ToRole="GymClass" />
+  </EntityType>
+  <EntityType Name="GymClass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="StartTime" Type="Time" Nullable="false" />
+    <Property Name="Duration" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Activity" Relationship="Model1.ActivityGymClass" FromRole="GymClass" ToRole="Activity" />
+    <Property Name="ActivityId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Room" Relationship="Model1.RoomGymClass" FromRole="GymClass" ToRole="Room" />
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BookedBies" Relationship="Model1.GymClassBookedBy" FromRole="GymClass" ToRole="BookedBy" />
+  </EntityType>
+  <EntityType Name="ClassBooking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MembershipNo" Type="String" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="Email" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MemberLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Activity" Relationship="Model1.ActivityMemberLog" FromRole="MemberLog" ToRole="Activity" />
+    <Property Name="ActivityId" Type="Int32" Nullable="false" />
+    <Property Name="Duration" Type="Int16" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="ProfileMembershipNo" Type="String" Nullable="false" />
+    <Property Name="ProfileId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="ActivityGymClass">
+    <End Type="Model1.Activity" Role="Activity" Multiplicity="1" />
+    <End Type="Model1.GymClass" Role="GymClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GymClass">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomGymClass">
+    <End Type="Model1.Room" Role="Room" Multiplicity="1" />
+    <End Type="Model1.GymClass" Role="GymClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GymClass">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActivityMemberLog">
+    <End Type="Model1.Activity" Role="Activity" Multiplicity="1" />
+    <End Type="Model1.MemberLog" Role="MemberLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MemberLog">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BookedBy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MembershipNo" Type="String" Nullable="false" />
+    <NavigationProperty Name="GymClass" Relationship="Model1.GymClassBookedBy" FromRole="BookedBy" ToRole="GymClass" />
+    <Property Name="GymClassId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="GymClassBookedBy">
+    <End Type="Model1.GymClass" Role="GymClass" Multiplicity="1" />
+    <End Type="Model1.BookedBy" Role="BookedBy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GymClass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BookedBy">
+        <PropertyRef Name="GymClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
