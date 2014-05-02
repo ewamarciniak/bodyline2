@@ -49,7 +49,6 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
-    <Property Name="StartTime" Type="time" Nullable="false" />
     <Property Name="Duration" Type="smallint" Nullable="false" />
     <Property Name="ActivityId" Type="int" Nullable="false" />
     <Property Name="RoomId" Type="int" Nullable="false" />
@@ -181,7 +180,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" />
-          <Property Name="StartTime" Type="Time" Nullable="false" />
           <Property Name="Duration" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Activity" Relationship="Model1.ActivityGymClass" FromRole="GymClass" ToRole="Activity" />
           <Property Name="ActivityId" Type="Int32" Nullable="false" />
@@ -294,7 +292,6 @@
         <MappingFragment StoreEntitySet="GymClasses">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
           <ScalarProperty Name="Duration" ColumnName="Duration" />
           <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
           <ScalarProperty Name="RoomId" ColumnName="RoomId" />

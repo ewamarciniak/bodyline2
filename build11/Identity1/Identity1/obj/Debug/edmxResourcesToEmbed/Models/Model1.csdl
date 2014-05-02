@@ -47,7 +47,6 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Date" Type="DateTime" Nullable="false" />
-    <Property Name="StartTime" Type="Time" Nullable="false" />
     <Property Name="Duration" Type="Int16" Nullable="false" />
     <NavigationProperty Name="Activity" Relationship="Model1.ActivityGymClass" FromRole="GymClass" ToRole="Activity" />
     <Property Name="ActivityId" Type="Int32" Nullable="false" />

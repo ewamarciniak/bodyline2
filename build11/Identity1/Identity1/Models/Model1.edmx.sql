@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/02/2014 16:40:24
--- Generated from EDMX file: C:\EF MAIN PROJECT 2014\BBBC1\build11\Identity1\Identity1\Models\Model1.edmx
+-- Date Created: 05/02/2014 20:10:28
+-- Generated from EDMX file: C:\Users\issadmin\bodyline\build11\Identity1\Identity1\Models\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -75,7 +75,6 @@ GO
 CREATE TABLE [dbo].[GymClasses] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Date] datetime  NOT NULL,
-    [StartTime] time  NOT NULL,
     [Duration] smallint  NOT NULL,
     [ActivityId] int  NOT NULL,
     [RoomId] int  NOT NULL

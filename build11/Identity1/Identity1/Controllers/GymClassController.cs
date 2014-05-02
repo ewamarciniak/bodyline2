@@ -49,7 +49,7 @@ namespace Identity1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Date,StartTime,Duration,ActivityId,RoomId")] GymClass gymclass)
+        public ActionResult Create([Bind(Include="Id,Date,Duration,ActivityId,RoomId")] GymClass gymclass)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Identity1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Date,StartTime,Duration,ActivityId,RoomId")] GymClass gymclass)
+        public ActionResult Edit([Bind(Include="Id,Date,Duration,ActivityId,RoomId")] GymClass gymclass)
         {
             if (ModelState.IsValid)
             {

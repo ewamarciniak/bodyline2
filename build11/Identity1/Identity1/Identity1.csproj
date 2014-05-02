@@ -149,10 +149,13 @@
   <ItemGroup>
     <Content Include="App_Data\Identity1-1-14.mdf" />
     <Content Include="App_Data\Identity1-1-14_log.ldf" />
+    <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\DateTimePickerReady.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Views\Activity\Create.cshtml" />
     <Content Include="Views\Activity\Delete.cshtml" />
     <Content Include="Views\Activity\Details.cshtml" />

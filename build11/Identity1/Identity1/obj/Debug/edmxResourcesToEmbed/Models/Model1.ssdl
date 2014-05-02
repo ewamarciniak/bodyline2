@@ -44,7 +44,6 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
-    <Property Name="StartTime" Type="time" Nullable="false" />
     <Property Name="Duration" Type="smallint" Nullable="false" />
     <Property Name="ActivityId" Type="int" Nullable="false" />
     <Property Name="RoomId" Type="int" Nullable="false" />
